@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<TextView 
+	    android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+		android:text="Poids :"
+		android:textColor="#FF0000"
+		android:gravity="center"
+		android:textStyle="bold"
+	/>
+	<EditText 
+	    android:id="@+id/poids"
+		android:layout_width="match_parent"
+		android:inputType="numberDecimal"
+		android:layout_height="wrap_content"
+		android:hint="mon poid"
+	/>
+	<TextView 
+	    android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+		android:text="Taille :"
+		android:textColor="#FF0000"
+		android:gravity="center"
+		android:textStyle="bold"
+	/>
+	<EditText 
+	    android:id="@+id/taille"
+		android:layout_width="match_parent"
+		android:inputType="numberDecimal"
+		android:layout_height="wrap_content"
+		android:hint="ma taille"
+	/>
+	<RadioGroup
+	    android:id="@+id/group"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    >
+	    <RadioButton 
+	        android:id="@+id/radio1"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:text="Mètre"
+	    />
+	    <RadioButton 
+	        android:id="@+id/radio2"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	    	android:text="Centimère"    
+	    />
+	</RadioGroup>
+	<CheckBox 
+	    android:id="@+id/mega"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+		android:text="Mega fonction !"    
+	/>
+	<Button 
+	    android:id="@+id/calcul"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" 
+		android:text="Calculer l'IMC"   
+	/>
+	<Button 
+	    android:id="@+id/raz"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="RAZ"    
+	/>
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Resultat :"
+	    />
+	<TextView 
+	    android:id="@+id/result"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Vous devez cliquer sur le bouton \n pour obtenir un résultat"    
+	/>
+</LinearLayout>
