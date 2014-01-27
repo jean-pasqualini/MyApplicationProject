@@ -57,27 +57,58 @@
 	    android:layout_height="wrap_content"
 		android:text="Mega fonction !"    
 	/>
-	<Button 
+    <!--
+	<Button
 	    android:id="@+id/calcul"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content" 
-		android:text="Calculer l'IMC"   
+		android:layout_height="wrap_content"
+		android:text="Calculer l'IMC"
 	/>
-	<Button 
+
+	<Button
 	    android:id="@+id/raz"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="RAZ"    
+		android:text="RAZ"
 	/>
-	<TextView 
+   -->
+	<TextView
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="Resultat :"
 	    />
-	<TextView 
+	<TextView
 	    android:id="@+id/result"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="Vous devez cliquer sur le bouton \n pour obtenir un résultat"    
+		android:text="Vous devez cliquer sur le bouton \n pour obtenir un résultat"
 	/>
+    <LinearLayout
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/premier"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:layout_gravity="bottom"
+            android:text="Premier bouton"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/second"
+            android:layout_weight="20"
+            android:layout_gravity="center"
+            android:gravity="bottom|right"
+            android:text="Second bouton"/>
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:id="@+id/troisieme"
+            android:layout_weight="40"
+            />
+
+    </LinearLayout>
 </LinearLayout>
