@@ -1,88 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En haut"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En bas"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A droite"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="A gauche"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Centrer dans le parent"
+        android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+    <!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-	<TextView 
-	    android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-		android:text="Poids :"
-		android:textColor="#FF0000"
-		android:gravity="center"
-		android:textStyle="bold"
-	/>
-	<EditText 
-	    android:id="@+id/poids"
-		android:layout_width="match_parent"
-		android:inputType="numberDecimal"
-		android:layout_height="wrap_content"
-		android:hint="mon poid"
-	/>
-	<TextView 
-	    android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-		android:text="Taille :"
-		android:textColor="#FF0000"
-		android:gravity="center"
-		android:textStyle="bold"
-	/>
-	<EditText 
-	    android:id="@+id/taille"
-		android:layout_width="match_parent"
-		android:inputType="numberDecimal"
-		android:layout_height="wrap_content"
-		android:hint="ma taille"
-	/>
-	<RadioGroup
-	    android:id="@+id/group"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    >
-	    <RadioButton 
-	        android:id="@+id/radio1"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	    	android:text="Mètre"
-	    />
-	    <RadioButton 
-	        android:id="@+id/radio2"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	    	android:text="Centimère"    
-	    />
-	</RadioGroup>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poids :"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_weight="20"
+            />
+        <EditText
+            android:id="@+id/poids"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_height="wrap_content"
+            android:hint="mon poid"
+            android:layout_weight="80"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taille :"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_weight="20"
+            />
+        <EditText
+            android:id="@+id/taille"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_height="wrap_content"
+            android:layout_weight="80"
+            android:hint="ma taille"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioGroup
+            android:id="@+id/group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mètre"
+                />
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Centimère"
+                />
+        </RadioGroup>
+    </LinearLayout>
 	<CheckBox 
 	    android:id="@+id/mega"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 		android:text="Mega fonction !"    
 	/>
-    <!--
-	<Button
-	    android:id="@+id/calcul"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="Calculer l'IMC"
-	/>
 
-	<Button
-	    android:id="@+id/raz"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="RAZ"
-	/>
-   -->
-	<TextView
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="Resultat :"
-	    />
-	<TextView
-	    android:id="@+id/result"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="Vous devez cliquer sur le bouton \n pour obtenir un résultat"
-	/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/calcul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculer l'IMC"
+            android:layout_weight="50"
+            />
+
+        <Button
+            android:id="@+id/raz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RAZ"
+            android:layout_weight="50"
+            />
+        </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resultat :"
+        />
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vous devez cliquer sur le bouton \n pour obtenir un résultat"
+        />
     <LinearLayout
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
@@ -108,7 +171,10 @@
             android:layout_width="fill_parent"
             android:id="@+id/troisieme"
             android:layout_weight="40"
+            android:text="Troisieme bouton"
             />
 
     </LinearLayout>
 </LinearLayout>
+-->
+
