@@ -52,12 +52,15 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+/**
+        this.setContentView(an);
 
         this.setContentView(R.layout.fragment_main);
-
+*/
+ /**
         this.manager = new MainManager(this);
         this.listener = new MainListener(this.manager);
-
+*/
     }
 
 

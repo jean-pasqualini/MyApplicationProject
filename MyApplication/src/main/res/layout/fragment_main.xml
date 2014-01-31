@@ -6,67 +6,57 @@
     android:stretchColumns="1"
     >
 
+    <TableRow>
+        <TextView
+            android:id="@+id/textPoid"
+            android:text="Poid"
+            android:paddingRight="10dip"
+            android:textStyle="bold"
+            />
+        <EditText
+            android:id="@+id/editPoid"
+            android:layout_span="2"
+            />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Taille"
+            android:paddingRight="10dip"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:layout_span="2"
+            />
+    </TableRow>
+
+    <RadioGroup
+        android:checkedButton="@+id/metre">
+        <RadioButton
+            android:id="@+id/metre"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Mètre"/>
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Centimètre"/>
+    </RadioGroup>
+
+    <TableRow>
+        <Button
+            android:layout_span="2"
+            android:text="Calculer l'imc"/>
+        <Button
+            android:layout_column="2"
+            android:text="RAZ"/>
+    </TableRow>
+
     <TextView
-        android:text="Les item précédées d'un V ouvre un sous menu"/>
-
-    <View android:layout_height="10dip"
-          android:background="#FF909090"/>
-
-    <TableRow>
-        <TextView
-            android:text="N'ouvre pas un sous menu"
-            android:layout_column="1"
-            android:padding="3dip"
-            />
-        <TextView
-            android:text="Non !"
-            android:gravity="right"
-            android:padding="3dip"
-            />
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:text="V"
-        />
-        <TextView
-            android:text="Ouvre un sous-menu"
-            android:layout_column="1"
-            android:padding="3dip"
-            />
-        <TextView
-            android:text="Là si ! "
-            android:gravity="right"
-            android:padding="3dip"/>
-
-    </TableRow>
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090"
+        android:text="Result"
         />
 
-    <TableRow>
-        <TextView
-            android:text="V"
-            />
-        <TextView
-            android:text="Ouvre un sous menu"
-            android:padding="3dip"
-
-            />
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090"/>
-
-    </TableRow>
-<TableRow>
-    <TextView
-        android:layout_column="1"
-        android:layout_span="2"
-        android:text="Cet item s'étend sur deux colonnes, cool hein ? "
-        android:padding="3dip"
-        />
-</TableRow>
 
 
 
