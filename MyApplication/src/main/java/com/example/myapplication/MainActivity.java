@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
 
     private TextView text = null;
     private Button button = null;
+    private String hist = null;
 
     private MainManager manager;
     private MainListener listener;
@@ -52,6 +56,20 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.fragment_main);
+
+        Resources res = getResources();
+
+
+
+        hist = res.getString(R.string.une_string, "john", 23, "persan");
+
+        TextView vue = (TextView)findViewById(R.id.vue);
+
+        vue.setText(hist);
+
+
 /**
         this.setContentView(an);
 

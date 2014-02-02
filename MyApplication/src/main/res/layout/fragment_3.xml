@@ -26,21 +26,7 @@
         android:layout_below="@id/premier"
         android:layout_toRightOf="@id/premier"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/quatrieme"
-        android:text="[IV] Au dessus de (V), bord gauche aligné avec le bord gauche de (II)"
-        android:layout_above="@id/cinquieme"
-        android:layout_alignLeft="@id/deuxieme"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cinquieme"
-        android:text="[V] En bas à gauche"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>

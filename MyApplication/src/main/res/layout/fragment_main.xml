@@ -6,57 +6,11 @@
     android:stretchColumns="1"
     >
 
-    <TableRow>
-        <TextView
-            android:id="@+id/textPoid"
-            android:text="Poid"
-            android:paddingRight="10dip"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/editPoid"
-            android:layout_span="2"
-            />
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:text="Taille"
-            android:paddingRight="10dip"
-            android:textStyle="bold"
-            />
-
-        <EditText
-            android:layout_span="2"
-            />
-    </TableRow>
-
-    <RadioGroup
-        android:checkedButton="@+id/metre">
-        <RadioButton
-            android:id="@+id/metre"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Mètre"/>
-        <RadioButton
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Centimètre"/>
-    </RadioGroup>
-
-    <TableRow>
-        <Button
-            android:layout_span="2"
-            android:text="Calculer l'imc"/>
-        <Button
-            android:layout_column="2"
-            android:text="RAZ"/>
-    </TableRow>
-
     <TextView
-        android:text="Result"
+        android:id="@+id/vue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         />
-
 
 
 

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="une_string">"%1$s à %2$d years and in <b>%3$s</b>"</string>
+</resources>
