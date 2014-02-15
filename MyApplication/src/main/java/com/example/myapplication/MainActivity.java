@@ -5,12 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,28 +62,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_main);
+        setContentView(R.layout.blocnote);
 
         Resources res = getResources();
 
 
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.my);
 
-        hist = res.getString(R.string.une_string, "john", 23, "persan");
-
-        TextView vue = (TextView)findViewById(R.id.vue);
-
-        vue.setText(hist);
+        LayoutAnimationController animationLayout = AnimationUtils.loadLayoutAnimation(this, R.anim.layoutmy);
 
 
-/**
-        this.setContentView(an);
-
-        this.setContentView(R.layout.fragment_main);
-*/
- /**
-        this.manager = new MainManager(this);
-        this.listener = new MainListener(this.manager);
-*/
     }
 
 
