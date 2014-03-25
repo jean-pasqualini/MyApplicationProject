@@ -11,6 +11,9 @@ import android.text.Spanned;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -158,7 +161,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_main);
+        setContentView(R.layout.blocnote);
 
         Resources res = getResources();
 
@@ -192,6 +195,7 @@ public class MainActivity extends ActionBarActivity {
         this.manager = new MainManager(this);
         this.listener = new MainListener(this.manager);
 */
+
     }
 
     private LinearLayout createAnnounce(JSONObject object) throws JSONException
@@ -267,7 +271,7 @@ public class MainActivity extends ActionBarActivity {
 
                 JSONArray jsonObject = new JSONArray(result);
 
-                TableLayout linerLayout = (TableLayout) findViewById(R.id.tables);
+                TableLayout linerLayout = (TableLayout) findViewById(R.id.tablel);
 
                 for(int i = 0, size = jsonObject.length(); i < size; i++)
                 {
