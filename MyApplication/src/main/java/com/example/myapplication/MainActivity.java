@@ -377,6 +377,10 @@ public class MainActivity extends ActionBarActivity {
 
             linearLayout.addView(col);
 
+            ToHtmlView toh = new ToHtmlView(this);
+
+            linearLayout.addView(toh);
+
        //  linearLayout.addView(un);
 
         }
