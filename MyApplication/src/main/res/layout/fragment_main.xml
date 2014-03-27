@@ -8,39 +8,16 @@
     android:layoutAnimation="@anim/layoutmy"
     >
 
-    <TextView
-        android:id="@+id/textSexe"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Quel est votre sexe :"/>
-
-    <ListView
-        android:id="@+id/listSexe"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:choiceMode="singleChoice"
-        ></ListView>
-
-    <TextView
-        android:id="@+id/textProg"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Quel(s) language(s) maitrisez vous :"/>
-
-    <GridView
-        android:id="@+id/listProg"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="2"
-        android:choiceMode="multipleChoice"></GridView>
-
-
-    <Button
-        android:id="@+id/send"
+    <ImageView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <MultiAutoCompleteTextView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Envoyer"/>
+        android:id="@+id/auto"/>
+
+
 
 
     </LinearLayout>

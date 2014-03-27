@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.app.ActionBar;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +12,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,6 +23,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -25,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -33,6 +41,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapter.RepertoireAdapter;
+import com.example.myapplication.Dialog.TestDialog;
 import com.example.myapplication.Listener.MainListener;
 import com.example.myapplication.Manager.MainManager;
 
@@ -75,6 +84,8 @@ public class MainActivity extends ActionBarActivity {
     private String[] mLanguages = null;
 
     private ListView liste = null;
+
+    private ActionBar actionBar;
 
     private final static int ID_NORMAL_DIALOG = 0;
     private final static int ID_ENEVEREE_DIALOG = 1;
@@ -328,7 +339,7 @@ public class MainActivity extends ActionBarActivity {
          liste.setAdapter(adapter);
 
          linearLayout.addView(liste);
- */
+
           //  linearLayout.addView(vue);
 
          Button un = new Button(this);
@@ -338,11 +349,35 @@ public class MainActivity extends ActionBarActivity {
          un.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 showDialog(ID_NORMAL_DIALOG);
+                 android.support.v4.app.DialogFragment newFragment = new TestDialog();
+
+                 newFragment.show(getSupportFragmentManager(), "untag");
              }
          });
+ */
+            MultiAutoCompleteTextView complete = (MultiAutoCompleteTextView) findViewById(R.id.auto);
 
-         linearLayout.addView(un);
+         complete.setThreshold(2);
+
+
+            liste = (ListView) new ListView(this);
+
+            List<String> example = new ArrayList<String>();
+
+            for(int i =  1; i <= 10; i++)
+            {
+                example.add("Element " + i);
+            }
+
+            ArrayAdapter<String> adapter = new RepertoireAdapter(this, example);
+
+         complete.setAdapter(adapter);
+
+            ColorButton col = new ColorButton(this);
+
+            linearLayout.addView(col);
+
+       //  linearLayout.addView(un);
 
         }
         catch(Exception e)
@@ -360,6 +395,34 @@ public class MainActivity extends ActionBarActivity {
         this.listener = new MainListener(this.manager);
 */
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        Toast.makeText(this, "option select", Toast.LENGTH_SHORT).show();
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View vue, ContextMenu.ContextMenuInfo menuInfo)
+    {
+        super.onCreateContextMenu(menu, vue, menuInfo);
+
+        menu.add(Menu.NONE, 0, Menu.NONE, "Supp");
+        menu.add(Menu.NONE, 1, Menu.NONE, "Ret");
     }
 
     private LinearLayout createAnnounce(JSONObject object) throws JSONException
