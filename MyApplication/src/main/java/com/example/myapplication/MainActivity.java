@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Dialog;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,16 +15,24 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Adapter.RepertoireAdapter;
 import com.example.myapplication.Listener.MainListener;
 import com.example.myapplication.Manager.MainManager;
 
@@ -42,6 +51,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -51,6 +63,23 @@ public class MainActivity extends ActionBarActivity {
 
     private MainManager manager;
     private MainListener listener;
+
+    private ListView mListSexe = null;
+
+    private GridView mListProg = null;
+
+    private Button mSend = null;
+
+    private String[] mSexes = {"Homme", "Femme"};
+
+    private String[] mLanguages = null;
+
+    private ListView liste = null;
+
+    private final static int ID_NORMAL_DIALOG = 0;
+    private final static int ID_ENEVEREE_DIALOG = 1;
+
+    ListView vue;
 
     private View.OnTouchListener buttonListener = new View.OnTouchListener()
     {
@@ -158,15 +187,32 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public Dialog onCreateDialog(int id)
+    {
+        Dialog box = null;
+
+        if(id == ID_NORMAL_DIALOG)
+        {
+            box = new Dialog(this);
+
+            box.setTitle("hahahehazze");
+        }
+
+        return box;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.blocnote);
+        setContentView(R.layout.fragment_main);
 
         Resources res = getResources();
 
         try {
-            text = (TextView) findViewById(R.id.vue);
+
+
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.tablel);
 
 /**
             JSONObject jsonObject = this.getJson("http://www.appartoo.com/api/v1/room/lastRooms?limit=4&noci=1");
@@ -178,13 +224,131 @@ public class MainActivity extends ActionBarActivity {
             TextView vue = (TextView) findViewById(R.id.vue);
 
             vue.setText(hist);
-*/
-            new HttpAsyncTask().execute("http://www.appartoo.com/api/v1/room/lastRooms?limit=4&noci=1");
+
+           // new HttpAsyncTask().execute("http://www.appartoo.com/api/v1/room/lastRooms?limit=4&noci=1");
+
+
+            TableLayout linerLayout = (TableLayout) findViewById(R.id.tablel);
+
+            vue = new ListView(this);
+
+            String[][] repertoire = new String[][]{
+                    {"Bill gates", "dqsdsqdsqd"},
+                    {"jean paul", "E23ED2"}
+            };
+
+            List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+
+            HashMap<String, String> element;
+
+            for(int i = 0; i < repertoire.length ; i++)
+            {
+                element = new HashMap<String, String>();
+
+                element.put("nom", repertoire[i][0]);
+
+                element.put("telephone", repertoire[i][1]);
+
+                list.add(element);
+            }
+
+            final ListAdapter adapter = new SimpleAdapter(
+                    this,
+                    list,
+                    android.R.layout.simple_list_item_single_choice,
+                    new String[] {"nom", "telephone"},
+                    new int[] { android.R.id.text1, android.R.id.text2 }
+            );
+
+            vue.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Toast.makeText(MainActivity.this, "vous avez cliquer sur le ", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            vue.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+            vue.setAdapter(adapter);
+
+            ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+
+            adapter1.add("Pommes");
+
+            int position = adapter1.getPosition("Pommes");
+
+            Toast.makeText(this, "Les " + adapter1.getItem(position) + " se trouve à la position" + position, Toast.LENGTH_LONG).show();
+
+            adapter1.remove("Pommes");
+
+
+            mListSexe = (ListView) findViewById(R.id.listSexe);
+
+            mListProg = (GridView) findViewById(R.id.listProg);
+
+            mSend = (Button) findViewById(R.id.send);
+
+            mLanguages = new String[]{"C", "Java", "COBOL", "Perl", "PHP"};
+
+            mListSexe.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, mSexes));
+
+            mListProg.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, mLanguages));
+
+            mListProg.setItemChecked(1, true);
+
+            mSend.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(MainActivity.this, "Merci", Toast.LENGTH_SHORT).show();
+
+                    mListSexe.setChoiceMode(ListView.CHOICE_MODE_NONE);
+
+                    mListProg.setChoiceMode(ListView.CHOICE_MODE_NONE);
+
+                    mListSexe.setAdapter(mListSexe.getAdapter());
+                }
+            });
+
+
+        liste = (ListView) new ListView(this);
+
+        List<String> example = new ArrayList<String>();
+
+        for(int i =  1; i <= 10; i++)
+        {
+                example.add("Element " + i);
+         }
+
+         ArrayAdapter<String> adapter = new RepertoireAdapter(this, example);
+
+       // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+         liste.setAdapter(adapter);
+
+         linearLayout.addView(liste);
+ */
+          //  linearLayout.addView(vue);
+
+         Button un = new Button(this);
+
+         un.setText("un bouton");
+
+         un.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 showDialog(ID_NORMAL_DIALOG);
+             }
+         });
+
+         linearLayout.addView(un);
 
         }
         catch(Exception e)
         {
-            Log.d("JSON", e.getLocalizedMessage());
+            e.printStackTrace();
+           // Log.d("JSON", e.getLocalizedMessage());
         }
 /**
         this.setContentView(an);
@@ -271,7 +435,7 @@ public class MainActivity extends ActionBarActivity {
 
                 JSONArray jsonObject = new JSONArray(result);
 
-                TableLayout linerLayout = (TableLayout) findViewById(R.id.tablel);
+                LinearLayout linerLayout = (LinearLayout) findViewById(R.id.tablel);
 
                 for(int i = 0, size = jsonObject.length(); i < size; i++)
                 {
