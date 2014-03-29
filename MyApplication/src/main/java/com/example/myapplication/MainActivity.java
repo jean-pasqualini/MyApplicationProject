@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.ActionBar;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -354,7 +355,7 @@ public class MainActivity extends ActionBarActivity {
                  newFragment.show(getSupportFragmentManager(), "untag");
              }
          });
- */
+
             MultiAutoCompleteTextView complete = (MultiAutoCompleteTextView) findViewById(R.id.auto);
 
          complete.setThreshold(2);
@@ -380,6 +381,23 @@ public class MainActivity extends ActionBarActivity {
             ToHtmlView toh = new ToHtmlView(this);
 
             linearLayout.addView(toh);
+ */
+            Button btn = new Button(this);
+
+            btn.setText("ouvre une activité");
+
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent second = new Intent(MainActivity.this, MainActivity2.class);
+
+                    second.putExtra(MainActivity2.AGE, 5);
+
+                    startActivityForResult(second, 0);
+                }
+            });
+
+            linearLayout.addView(btn);
 
        //  linearLayout.addView(un);
 
@@ -399,6 +417,18 @@ public class MainActivity extends ActionBarActivity {
         this.listener = new MainListener(this.manager);
 */
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(requestCode == 0)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                Toast.makeText(this, "Vous avez choisi le bouton " + data.getIntExtra(MainActivity2.AGE, 0), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
