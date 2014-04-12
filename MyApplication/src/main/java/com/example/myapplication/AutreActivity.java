@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -36,6 +37,10 @@ public class AutreActivity extends ActionBarActivity {
         mWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(AutreActivity.this, ExploreurPreference.class);
+
+                startActivity(intent);
                 try {
                     FileOutputStream output = openFileOutput("prenom.txt", MODE_PRIVATE);
 
