@@ -41,6 +41,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapter.RepertoireAdapter;
+import com.example.myapplication.Adapter.RoomAdapter;
 import com.example.myapplication.Dialog.TestDialog;
 import com.example.myapplication.Listener.MainListener;
 import com.example.myapplication.Manager.MainManager;
@@ -166,7 +167,7 @@ public class MainActivity extends ActionBarActivity {
             }
             else
             {
-                Log.d("JSON", "Failed to download file");
+                Log.d("JSON", "Failed to download file " + statusCode);
             }
         }
         catch(Exception e)
@@ -212,6 +213,8 @@ public class MainActivity extends ActionBarActivity {
         return box;
     }
 
+    private List<String> rooms = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -224,6 +227,18 @@ public class MainActivity extends ActionBarActivity {
 
 
             LinearLayout linearLayout = (LinearLayout) findViewById(R.id.tablel);
+
+            ListView listView = new ListView(this);
+
+            rooms.add("une annonce");
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, rooms);
+
+            listView.setAdapter(adapter);
+
+            linearLayout.addView(listView);
+
+            new HttpAsyncTask().execute("http://www.appartoo.com/api/v1/room/lastRooms?limit=10&noci=1");
 
 /**
             JSONObject jsonObject = this.getJson("http://www.appartoo.com/api/v1/room/lastRooms?limit=4&noci=1");
@@ -355,6 +370,7 @@ public class MainActivity extends ActionBarActivity {
              }
          });
  */
+        /**
             MultiAutoCompleteTextView complete = (MultiAutoCompleteTextView) findViewById(R.id.auto);
 
          complete.setThreshold(2);
@@ -382,7 +398,7 @@ public class MainActivity extends ActionBarActivity {
             linearLayout.addView(toh);
 
        //  linearLayout.addView(un);
-
+*/
         }
         catch(Exception e)
         {
@@ -429,8 +445,11 @@ public class MainActivity extends ActionBarActivity {
         menu.add(Menu.NONE, 1, Menu.NONE, "Ret");
     }
 
-    private LinearLayout createAnnounce(JSONObject object) throws JSONException
+    private void createAnnounce(JSONObject object) throws JSONException
     {
+        this.rooms.add(object.getString("title"));
+
+/**
         LinearLayout linearLayout = new LinearLayout(this);
 
         TextView descript = new TextView(MainActivity.this);
@@ -446,6 +465,7 @@ public class MainActivity extends ActionBarActivity {
         linearLayout.addView(image);
 
         return linearLayout;
+ */
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -503,13 +523,25 @@ public class MainActivity extends ActionBarActivity {
                 JSONArray jsonObject = new JSONArray(result);
 
                 LinearLayout linerLayout = (LinearLayout) findViewById(R.id.tablel);
-
+/**
                 for(int i = 0, size = jsonObject.length(); i < size; i++)
                 {
                     JSONObject array = jsonObject.getJSONObject(i);
 
-                    linerLayout.addView(MainActivity.this.createAnnounce(array));
+                    MainActivity.this.createAnnounce(array);
+
+                    //linerLayout.addView(MainActivity.this.createAnnounce(array));
                 }
+*/
+                ListView listView = new ListView(MainActivity.this);
+
+                RoomAdapter adapter = new RoomAdapter(MainActivity.this, jsonObject);
+
+                listView.setAdapter(adapter);
+
+                linerLayout.addView(listView);
+
+                //new HttpAsyncTask().execute("http://www.appartoo.com/api/v1/room/lastRooms?limit=4&noci=1");
             }
             catch(Exception e)
             {
