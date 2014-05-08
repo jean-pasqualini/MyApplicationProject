@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="couleur">
+        <com.example.myapplication.Dialog.ColorPickerPreferenceDialog
+            android:key="repertoireColorPref"
+            android:title="Repertoires"
+            android:summary="Chosir une chouleur des repertoires"
+            android:dialogTitle="Couleur des repertoires"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>
